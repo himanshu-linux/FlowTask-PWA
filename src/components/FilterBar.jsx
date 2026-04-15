@@ -54,7 +54,7 @@ export default function FilterBar() {
       </div>
 
       {/* Row 2: Priority + Category filters */}
-      <div className="flex flex-wrap items-center gap-2">
+      <div className="flex items-center gap-2" style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none', msOverflowStyle: 'none', paddingBottom: 4 }}>
         {/* Priority */}
         <div className="flex items-center gap-1.5">
           <span className="text-xs font-semibold text-textMuted uppercase tracking-wide">Priority</span>

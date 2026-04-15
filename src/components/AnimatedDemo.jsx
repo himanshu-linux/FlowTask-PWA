@@ -219,7 +219,7 @@ export default function AnimatedDemo() {
       </div>
 
       {/* Step indicators */}
-      <div style={{ display: 'flex', justifyContent: 'center', gap: 20, marginTop: 28 }}>
+      <div className="demo-steps-row" style={{ display: 'flex', justifyContent: 'center', gap: 20, marginTop: 28 }}>
         {STEPS.map((s, i) => (
           <button
             key={i}
@@ -234,7 +234,7 @@ export default function AnimatedDemo() {
               transition: 'all 0.4s ease',
               marginBottom: 8,
             }} />
-            <div style={{ color: i === step ? '#a5b4fc' : '#475569', fontSize: 11, fontWeight: i === step ? 600 : 400, transition: 'color 0.3s' }}>
+            <div className="demo-step-text" style={{ color: i === step ? '#a5b4fc' : '#475569', fontSize: 11, fontWeight: i === step ? 600 : 400, transition: 'color 0.3s' }}>
               {s.label}
             </div>
           </button>

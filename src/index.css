@@ -188,3 +188,74 @@
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   COMPREHENSIVE MOBILE RESPONSIVE
+   Breakpoints: 768px (tablet) · 640px (mobile) · 400px (small)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Global: prevent page-level horizontal scroll ──────────── */
+html, body {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ── Tablet (≤ 768px) ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Reduce app-area horizontal padding */
+  .max-w-2xl {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* ── Mobile (≤ 640px) ──────────────────────────────────────── */
+@media (max-width: 640px) {
+  /* Kanban — touch-friendly snap scroll */
+  .kanban-board {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 16px;
+  }
+  .kanban-column {
+    scroll-snap-align: start;
+    min-width: 260px;
+  }
+
+  /* Compact touch-friendly task cards */
+  .task-card {
+    padding: 12px 14px !important;
+    border-radius: 16px !important;
+  }
+
+  /* Compact filter buttons */
+  .filter-btn {
+    padding: 5px 10px !important;
+    font-size: 11px !important;
+  }
+
+  /* Input fields — comfortable on mobile */
+  .input-field {
+    padding: 12px 16px !important;
+    font-size: 16px !important; /* prevents iOS zoom on focus */
+  }
+}
+
+/* ── Auth pages — tighter padding on tiny phones ───────────── */
+@media (max-width: 400px) {
+  .auth-card {
+    padding: 20px 16px !important;
+    border-radius: 20px !important;
+  }
+}
+
+/* ── Animated Demo — hide step labels on small phones ─────── */
+@media (max-width: 520px) {
+  .demo-step-text {
+    display: none;
+  }
+  .demo-steps-row {
+    gap: 12px !important;
+    justify-content: center;
+  }
+}

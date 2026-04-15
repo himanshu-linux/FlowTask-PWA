@@ -59,7 +59,7 @@ export default function Signup() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background px-4 py-12 animate-fade-in">
-      <div className="max-w-md w-full space-y-8 bg-surface p-8 rounded-3xl border border-border shadow-glass">
+      <div className="auth-card max-w-md w-full space-y-8 bg-surface p-8 rounded-3xl border border-border shadow-glass">
         <div className="text-center">
           <div className="mx-auto h-12 w-12 rounded-2xl bg-primary flex items-center justify-center shadow-lg mb-4">
             <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -122,6 +122,17 @@ export default function Landing() {
   return (
     <div className="min-h-screen bg-[#060b14] text-white overflow-x-hidden" style={{ fontFamily: 'Inter, sans-serif' }}>
       <style>{`
+        /* ── Tablet (≤ 768px) ──────────────────────────────── */
+        @media (max-width: 768px) {
+          .landing-analytics-grid {
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+          }
+          .landing-hero-section {
+            padding: 72px 24px 56px !important;
+          }
+        }
+        /* ── Mobile (≤ 640px) ──────────────────────────────── */
         @media (max-width: 640px) {
           .landing-hero-section {
             padding: 56px 20px 40px !important;
@@ -172,6 +183,27 @@ export default function Landing() {
           }
           .landing-demo-section {
             padding: 0 20px 64px !important;
+          }
+        }
+        /* ── Very small phones (≤ 380px) ───────────────────── */
+        @media (max-width: 380px) {
+          .landing-hero-section {
+            padding: 48px 16px 32px !important;
+          }
+          .landing-features-section {
+            padding: 48px 16px !important;
+          }
+          .landing-analytics-section {
+            padding: 0 16px 48px !important;
+          }
+          .landing-demo-section {
+            padding: 0 16px 48px !important;
+          }
+          .landing-cta-box {
+            padding: 28px 16px !important;
+          }
+          .landing-stats-grid {
+            gap: 14px !important;
           }
         }
       `}</style>
