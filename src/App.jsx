@@ -82,6 +82,21 @@ export default function App() {
   return (
     <AuthProvider>
       <Toaster position="top-right" reverseOrder={false} />
+      
+      {/* Global Branding Signature */}
+      <div className="fixed bottom-4 right-4 z-50 pointer-events-none select-none opacity-50 hover:opacity-100 transition-opacity duration-500 hidden sm:block">
+        <span className="bg-surface/80 backdrop-blur-lg border border-border/50 text-[10px] font-bold text-textSecondary uppercase tracking-widest px-3 py-1.5 rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.1)] flex items-center gap-1.5">
+          Design by <span className="text-primary drop-shadow-md">Him</span>
+        </span>
+      </div>
+      
+      {/* Mobile Branding Signature (Center bottom) */}
+      <div className="fixed bottom-2 left-1/2 -translate-x-1/2 z-50 pointer-events-none select-none opacity-40 hover:opacity-100 transition-opacity duration-500 sm:hidden">
+        <span className="text-[9px] font-bold text-textMuted uppercase tracking-widest drop-shadow-sm flex items-center gap-1">
+          Design by <span className="text-primary">Him</span>
+        </span>
+      </div>
+
       <Routes location={location} key={location.pathname}>
 
         {/* ── Public: Landing page — root, always shown first ── */}
