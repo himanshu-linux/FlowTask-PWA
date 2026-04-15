@@ -115,7 +115,7 @@ export default function Dashboard() {
           {/* Weekly Chart */}
           <div className="lg:col-span-2 glass-card p-6 min-h-[300px]">
             <h3 className="font-bold text-textMain mb-6">Weekly Activity</h3>
-            <div className="h-[200px] w-full" style={{ minWidth: 0, minHeight: 0, overflow: 'hidden' }}>
+            <div className="h-[200px] w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={chartData}>
                   <defs>

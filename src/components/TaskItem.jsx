@@ -32,7 +32,7 @@ export default function TaskItem({ task, index, onDragStart, onDragOver, onDrop,
       try {
         await editTask(task.id, { text: editValue.trim() });
         toast.success('Task updated');
-      } catch (err) {
+      } catch {
         toast.error('Update failed');
       }
     } else {
@@ -46,7 +46,7 @@ export default function TaskItem({ task, index, onDragStart, onDragOver, onDrop,
       try {
         await deleteTask(task.id);
         toast.success('Task removed');
-      } catch (err) {
+      } catch {
         toast.error('Deletion failed');
       }
     } else {

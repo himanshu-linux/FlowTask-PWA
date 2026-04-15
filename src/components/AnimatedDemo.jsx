@@ -99,7 +99,7 @@ function KanbanScreen() {
               <span style={{ color: '#94a3b8', fontSize: 8, fontWeight: 700, letterSpacing: 1 }}>{col.label}</span>
               <span style={{ background: '#334155', color: '#64748b', borderRadius: 4, padding: '1px 5px', fontSize: 8, marginLeft: 'auto' }}>{col.cards.length}</span>
             </div>
-            {col.cards.map((card, i) => (
+            {col.cards.map((card) => (
               <div key={card} style={{
                 background: activeCard === card ? '#312e81' : '#0f172a',
                 border: `1px solid ${activeCard === card ? '#6366f1' : '#1e293b'}`,

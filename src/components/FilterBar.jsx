@@ -13,7 +13,7 @@ export default function FilterBar() {
       try {
         await clearCompleted();
         toast.success('Cleared completed tasks');
-      } catch (err) {
+      } catch {
         toast.error('Failed to clear tasks');
       }
     }

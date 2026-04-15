@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { useTask } from '../context/TaskContext';
 import { PRIORITY_LIST, CATEGORY_LIST, PRIORITIES, CATEGORIES } from '../utils/constants';
 import { aiService } from '../services/aiService';
@@ -63,7 +63,7 @@ export default function TaskInput() {
       setForm(DEFAULT_FORM);
       setShowAdvanced(false);
       setAiSuggestions(null);
-    } catch (err) {
+    } catch {
       toast.error('Failed to add task');
     }
   };

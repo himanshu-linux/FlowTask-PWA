@@ -1,10 +1,10 @@
 import { useRef, useState } from 'react';
 import { useTask } from '../context/TaskContext';
-import { actions } from '../utils/actionTypes';
+
 import TaskItem from './TaskItem';
 
 export default function TaskList() {
-  const { filteredTasks, state, dispatch, reorderTasks } = useTask();
+  const { filteredTasks, state, reorderTasks } = useTask();
   const dragIndexRef = useRef(null);
   const [draggingIndex, setDraggingIndex] = useState(null);
 
@@ -52,22 +52,22 @@ export default function TaskList() {
   // ── Empty states ─────────────────────────────────────────────────────────
   if (filteredTasks.length === 0) {
     const { statusFilter, priorityFilter, categoryFilter, searchQuery } = state;
-    let icon, title, sub;
+    let title, sub;
 
     if (searchQuery) {
-      icon = '🔍'; title = 'No results found';
+      title = 'No results found';
       sub = `No tasks match "${searchQuery}". Try a different search.`;
     } else if (statusFilter === 'Completed') {
-      icon = '🎯'; title = 'No completed tasks';
+      title = 'No completed tasks';
       sub = "Complete some tasks and they'll appear here.";
     } else if (statusFilter === 'Active') {
-      icon = '🎉'; title = 'All done!';
+      title = 'All done!';
       sub = 'You have no active tasks. Great work!';
     } else if (priorityFilter !== 'All' || categoryFilter !== 'All') {
-      icon = '🔎'; title = 'No tasks match your filters';
+      title = 'No tasks match your filters';
       sub = 'Try adjusting your priority or category filters.';
     } else {
-      icon = '✦'; title = 'No tasks yet';
+      title = 'No tasks yet';
       sub = 'Add your first task above to get started.';
     }
 

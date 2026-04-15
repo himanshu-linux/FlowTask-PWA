@@ -8,7 +8,7 @@ import { SkeletonCard } from './common/SkeletonCards';
 import { motion, AnimatePresence } from 'framer-motion';
 import toast from 'react-hot-toast';
 
-export default function KanbanColumn({ id, title, tasks, icon, color, isLoading, onOpenDetails, onOpenShare }) {
+export default function KanbanColumn({ id, title, tasks, color, isLoading, onOpenDetails, onOpenShare }) {
   const { addTask } = useTask();
   const [isAdding, setIsAdding] = useState(false);
   const [newValue, setNewValue] = useState('');
@@ -39,7 +39,7 @@ export default function KanbanColumn({ id, title, tasks, icon, color, isLoading,
       setNewValue('');
       setAiAnalysis(null);
       setIsAdding(false);
-    } catch (err) {
+    } catch {
       toast.error('Failed to add task');
     }
   };

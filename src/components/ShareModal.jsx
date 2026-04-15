@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, UserPlus, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { useTask } from '../context/TaskContext';
-import toast from 'react-hot-toast';
 
 const ShareModal = ({ isOpen, onClose, taskId, taskText }) => {
   const [email, setEmail] = useState('');

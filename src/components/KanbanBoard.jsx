@@ -27,7 +27,7 @@ export default function KanbanBoard() {
 
     try {
       await moveTask(draggableId, destination.droppableId, destination.index);
-    } catch (err) {
+    } catch {
       toast.error('Failed to move task');
     }
   };
