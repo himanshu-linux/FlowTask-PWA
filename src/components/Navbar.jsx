@@ -53,11 +53,41 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           {/* User info */}
           {currentUser && (
-            <div className="hidden md:flex flex-col items-end mr-1">
-              <span className="text-[10px] font-bold text-textMain leading-none">Logged in as</span>
-              <span className="text-[11px] text-textSecondary truncate max-w-[100px]">
-                {currentUser.displayName || currentUser.email}
-              </span>
+            <div style={{
+              display: 'flex', alignItems: 'center', gap: 8,
+              background: 'linear-gradient(135deg, rgba(99,102,241,0.10), rgba(6,182,212,0.08))',
+              border: '1px solid rgba(99,102,241,0.25)',
+              borderRadius: 14,
+              padding: '4px 12px 4px 5px',
+              backdropFilter: 'blur(10px)',
+              boxShadow: '0 0 16px rgba(99,102,241,0.12)',
+            }}>
+              {/* Glowing avatar circle */}
+              <div style={{
+                width: 30, height: 30,
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #6366f1, #06b6d4)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                flexShrink: 0,
+                fontSize: 13, fontWeight: 900, color: '#fff', letterSpacing: '-0.5px',
+                boxShadow: '0 0 10px rgba(99,102,241,0.6), 0 0 24px rgba(6,182,212,0.3)',
+              }}>
+                {(currentUser.displayName || currentUser.email || 'U')[0].toUpperCase()}
+              </div>
+              {/* Name + greeting — hidden on very small screens */}
+              <div className="hidden sm:flex flex-col" style={{ lineHeight: 1 }}>
+                <span style={{ fontSize: 9, color: '#818cf8', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 2 }}>
+                  Hey 👋
+                </span>
+                <span style={{
+                  fontSize: 13, fontWeight: 800,
+                  background: 'linear-gradient(135deg, #a5b4fc 0%, #06b6d4 100%)',
+                  WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                  maxWidth: 96, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+                }}>
+                  {currentUser.displayName || currentUser.email?.split('@')[0] || 'User'}
+                </span>
+              </div>
             </div>
           )}
 
