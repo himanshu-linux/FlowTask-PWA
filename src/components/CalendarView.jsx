@@ -18,11 +18,11 @@ const DnDCalendar = withDragAndDrop(Calendar);
 
 // ── Category / status color map ───────────────────────────────────────────────
 const EVENT_COLORS = {
-  Work:      { bg: '#1e3a8a', border: '#3b82f6', glow: 'rgba(59,130,246,0.4)' },
-  Personal:  { bg: '#4a1d96', border: '#a855f7', glow: 'rgba(168,85,247,0.4)' },
-  Study:     { bg: '#7c2d12', border: '#f97316', glow: 'rgba(249,115,22,0.4)' },
+  Work: { bg: '#1e3a8a', border: '#3b82f6', glow: 'rgba(59,130,246,0.4)' },
+  Personal: { bg: '#4a1d96', border: '#a855f7', glow: 'rgba(168,85,247,0.4)' },
+  Study: { bg: '#7c2d12', border: '#f97316', glow: 'rgba(249,115,22,0.4)' },
   completed: { bg: '#064e3b', border: '#10b981', glow: 'rgba(16,185,129,0.3)' },
-  default:   { bg: '#1e293b', border: '#6366f1', glow: 'rgba(99,102,241,0.3)' },
+  default: { bg: '#1e293b', border: '#6366f1', glow: 'rgba(99,102,241,0.3)' },
 };
 
 function getColors(task) {
@@ -121,27 +121,27 @@ function CustomToolbar({ label, view, onView, onNavigate }) {
 
 // ── Filter config ─────────────────────────────────────────────────────────────
 const FILTERS = [
-  { key: 'All',       label: 'All Events', color: '#6366f1', icon: '📋' },
-  { key: 'Work',      label: 'Work',       color: '#3b82f6', icon: '💼' },
-  { key: 'Personal',  label: 'Personal',   color: '#a855f7', icon: '🏠' },
-  { key: 'Study',     label: 'Study',      color: '#f97316', icon: '📚' },
-  { key: 'Completed', label: 'Completed',  color: '#10b981', icon: '✅' },
+  { key: 'All', label: 'All Events', color: '#6366f1', icon: '📋' },
+  { key: 'Work', label: 'Work', color: '#3b82f6', icon: '💼' },
+  { key: 'Personal', label: 'Personal', color: '#a855f7', icon: '🏠' },
+  { key: 'Study', label: 'Study', color: '#f97316', icon: '📚' },
+  { key: 'Completed', label: 'Completed', color: '#10b981', icon: '✅' },
 ];
 
 // ── Main Calendar View ────────────────────────────────────────────────────────
 export default function CalendarView() {
   const { state, editTask, toggleTask, deleteTask } = useTask();
-  const [view, setView]           = useState(Views.MONTH);
-  const [date, setDate]           = useState(new Date());
+  const [view, setView] = useState(Views.MONTH);
+  const [date, setDate] = useState(new Date());
   const [selectedTask, setSelectedTask] = useState(null);
-  const [filter, setFilter]       = useState('All');
+  const [filter, setFilter] = useState('All');
 
   // Convert tasks with dueDates → RBC events
   const events = useMemo(() => {
     return state.tasks
       .filter(t => t.dueDate)
       .filter(t => {
-        if (filter === 'All')       return true;
+        if (filter === 'All') return true;
         if (filter === 'Completed') return t.completed;
         return t.category === filter && !t.completed;
       })
@@ -162,8 +162,8 @@ export default function CalendarView() {
     const all = state.tasks.filter(t => t.dueDate);
     return {
       total: all.length,
-      done:  all.filter(t => t.completed).length,
-      high:  all.filter(t => t.priority === 'High' && !t.completed).length,
+      done: all.filter(t => t.completed).length,
+      high: all.filter(t => t.priority === 'High' && !t.completed).length,
       unscheduled: unscheduled.length,
     };
   }, [state.tasks, unscheduled]);
@@ -233,10 +233,10 @@ export default function CalendarView() {
         gap: 12, marginBottom: 22,
       }} className="cal-stats-grid">
         {[
-          { label: 'Scheduled', value: stats.total,       color: '#6366f1', icon: '📅' },
-          { label: 'Done',      value: stats.done,        color: '#10b981', icon: '✅' },
-          { label: 'High Prio', value: stats.high,        color: '#ef4444', icon: '🔥' },
-          { label: 'Pending',   value: stats.unscheduled, color: '#f97316', icon: '📋' },
+          { label: 'Scheduled', value: stats.total, color: '#6366f1', icon: '📅' },
+          { label: 'Done', value: stats.done, color: '#10b981', icon: '✅' },
+          { label: 'High Prio', value: stats.high, color: '#ef4444', icon: '🔥' },
+          { label: 'Pending', value: stats.unscheduled, color: '#f97316', icon: '📋' },
         ].map(s => (
           <div key={s.label} style={{
             background: 'rgba(15,23,42,0.6)',
@@ -291,26 +291,26 @@ export default function CalendarView() {
           border: '1px solid rgba(51,65,85,0.5)', padding: '20px 16px',
           backdropFilter: 'blur(10px)',
         }}>
-        {/* Calendar wrapped in DndProvider (required by withDragAndDrop) */}
-        <DndProvider backend={HTML5Backend}>
-          <DnDCalendar
-            localizer={localizer}
-            events={events}
-            view={view}
-            date={date}
-            onView={setView}
-            onNavigate={setDate}
-            onEventDrop={handleEventDrop}
-            onSelectEvent={handleSelectEvent}
-            eventPropGetter={eventStyleGetter}
-            components={{ toolbar: CustomToolbar, event: CustomEvent }}
-            draggableAccessor={() => true}
-            resizable={false}
-            style={{ height: view === Views.MONTH ? 580 : 660 }}
-            popup
-            popupOffset={{ x: 0, y: 8 }}
-          />
-        </DndProvider>
+          {/* Calendar wrapped in DndProvider (required by withDragAndDrop) */}
+          <DndProvider backend={HTML5Backend}>
+            <DnDCalendar
+              localizer={localizer}
+              events={events}
+              view={view}
+              date={date}
+              onView={setView}
+              onNavigate={setDate}
+              onEventDrop={handleEventDrop}
+              onSelectEvent={handleSelectEvent}
+              eventPropGetter={eventStyleGetter}
+              components={{ toolbar: CustomToolbar, event: CustomEvent }}
+              draggableAccessor={() => true}
+              resizable={false}
+              style={{ height: view === Views.MONTH ? 580 : 660 }}
+              popup
+              popupOffset={{ x: 0, y: 8 }}
+            />
+          </DndProvider>
         </div>
 
         {/* Sidebar — unscheduled tasks */}
@@ -373,9 +373,9 @@ export default function CalendarView() {
               Legend
             </p>
             {[
-              { label: 'Work',      color: '#3b82f6' },
-              { label: 'Personal',  color: '#a855f7' },
-              { label: 'Study',     color: '#f97316' },
+              { label: 'Work', color: '#3b82f6' },
+              { label: 'Personal', color: '#a855f7' },
+              { label: 'Study', color: '#f97316' },
               { label: 'Completed', color: '#10b981' },
               { label: 'High Prio', color: '#ef4444', dot: true },
             ].map(item => (
