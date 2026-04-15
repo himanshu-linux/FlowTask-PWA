@@ -1,0 +1,190 @@
+/* stylelint-disable at-rule-no-unknown */
+/* Google Fonts loaded non-blocking via <link> in index.html */
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* ── Color tokens ──────────────────────────────────────────────────────────── */
+/* Values are space-separated RGB triplets (no rgb() wrapper) so Tailwind's    */
+/* <alpha-value> pattern works: rgb(var(--color-x) / 0.2)                      */
+
+:root {
+  /* Backgrounds */
+  --color-background:    248 250 255;  /* #f8faff */
+  --color-surface:       255 255 255;  /* #ffffff */
+  --color-surface-muted: 241 245 249;  /* #f1f5f9 */
+
+  /* Borders */
+  --color-border:        226 232 240;  /* #e2e8f0 */
+  --color-border-hover:  203 213 225;  /* #cbd5e1 */
+
+  /* Brand */
+  --color-primary:       37  99  235;  /* #2563eb */
+  --color-primary-light: 239 246 255;  /* #eff6ff */
+  --color-primary-hover: 29  78  216;  /* #1d4ed8 */
+
+  /* Text */
+  --color-text-main:      15  23  42;  /* #0f172a */
+  --color-text-secondary: 71  85 105;  /* #475569 */
+  --color-text-muted:    148 163 184;  /* #94a3b8 */
+
+  /* Semantic */
+  --color-success:        16 185 129;  /* #10b981 */
+  --color-success-light: 236 253 245;  /* #ecfdf5 */
+  --color-danger:        239  68  68;  /* #ef4444 */
+  --color-danger-light:  254 242 242;  /* #fef2f2 */
+}
+
+.dark {
+  /* Backgrounds */
+  --color-background:     15  23  42;  /* #0f172a */
+  --color-surface:        30  41  59;  /* #1e293b */
+  --color-surface-muted:  51  65  85;  /* #334155 */
+
+  /* Borders */
+  --color-border:         51  65  85;  /* #334155 */
+  --color-border-hover:   71  85 105;  /* #475569 */
+
+  /* Brand — slightly lighter for dark bg contrast */
+  --color-primary:        96 165 250;  /* #60a5fa */
+  --color-primary-light:  23  37  84;  /* #172554 */
+  --color-primary-hover:  59 130 246;  /* #3b82f6 */
+
+  /* Text */
+  --color-text-main:     248 250 252;  /* #f8fafc */
+  --color-text-secondary:203 213 225;  /* #cbd5e1 */
+  --color-text-muted:    100 116 139;  /* #64748b  */
+
+  /* Semantic */
+  --color-success:        52 211 153;  /* #34d399 */
+  --color-success-light:   6  78  59;  /* #064e3b */
+  --color-danger:        248 113 113;  /* #f87171 */
+  --color-danger-light:   69  10  10;  /* #450a0a */
+}
+
+/* ── Base ──────────────────────────────────────────────────────────────────── */
+@layer base {
+  * { box-sizing: border-box; }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-textMain font-sans m-0 min-h-screen;
+    /* Smooth theme transition — only color properties, not layout */
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease,
+      border-color 0.3s ease;
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgb(var(--color-primary) / 0.06) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 0%, rgb(var(--color-primary) / 0.03) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+/* ── Components ────────────────────────────────────────────────────────────── */
+@layer components {
+
+  /* Input */
+  .input-field {
+    @apply w-full bg-surface border border-border rounded-xl px-5 py-4 text-textMain
+           placeholder-textMuted text-[15px] font-medium
+           focus:outline-none focus:border-primary transition-all duration-200 shadow-xs;
+  }
+  .input-field:focus {
+    box-shadow: 0 0 0 3px rgb(var(--color-primary) / 0.12);
+  }
+
+  /* Task card */
+  .task-card {
+    @apply bg-surface border border-border rounded-2xl px-5 py-4
+           transition-all duration-300 cursor-default shadow-sm hover:shadow-md;
+  }
+  .task-card:hover {
+    @apply border-borderHover -translate-y-0.5;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+
+  /* Filter button */
+  .filter-btn        { @apply px-4 py-1.5 rounded-lg font-medium transition-all duration-200 text-sm; }
+  .filter-btn-active { @apply bg-primary text-white shadow-md scale-105; }
+  .filter-btn-inactive { @apply text-textSecondary hover:text-textMain hover:bg-surfaceMuted; }
+
+  /* Icon button */
+  .icon-btn { @apply p-2 rounded-xl transition-all duration-200 flex items-center justify-center hover:scale-110; }
+
+  /* Kanban Board — no horizontal scrollbar, columns fill available space */
+  .kanban-board {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+    min-height: 70vh;
+    align-items: start;
+    overflow: hidden;         /* hide any accidental overflow */
+    width: 100%;
+  }
+  /* Keep scroll on very small screens but hide the ugly bar */
+  @media (max-width: 640px) {
+    .kanban-board {
+      grid-template-columns: repeat(3, 280px);
+      overflow-x: auto;
+      scrollbar-width: none;   /* Firefox */
+    }
+    .kanban-board::-webkit-scrollbar { display: none; }  /* Chrome/Safari */
+  }
+
+  /* Kanban Column — fills its grid cell */
+  .kanban-column {
+    @apply w-full flex flex-col bg-surfaceMuted/50 border border-border/50 rounded-2xl p-4 transition-colors min-h-[350px];
+  }
+  .kanban-column-active {
+    @apply bg-primary/5 border-primary/20;
+  }
+
+  /* Draggable Card States */
+  .dragging {
+    @apply shadow-xl border-primary/40 rotate-1 scale-105 z-50 !important;
+  }
+
+  /* Skeleton Loading */
+  .skeleton {
+    @apply bg-surfaceMuted relative overflow-hidden;
+  }
+  .skeleton::after {
+    @apply absolute inset-0 content-[''];
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgb(var(--color-primary) / 0.05),
+      transparent
+    );
+    animation: skeleton-shimmer 1.5s infinite;
+  }
+}
+
+@keyframes skeleton-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes task-appear {
+  from { opacity: 0; transform: translateY(10px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.animate-task-appear {
+  animation: task-appear 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <!-- Premium dark background gradient -->
+    <linearGradient id="bg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f1729"/>
+      <stop offset="100%" stop-color="#1a0a3c"/>
+    </linearGradient>
+
+    <!-- Main brand gradient: electric cyan → vivid indigo -->
+    <linearGradient id="brand" x1="12" y1="44" x2="52" y2="18" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#00d4ff"/>
+      <stop offset="50%"  stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+
+    <!-- Soft white glow filter -->
+    <filter id="glow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Subtle inner glow for background -->
+    <radialGradient id="innerGlow" cx="50%" cy="40%" r="55%">
+      <stop offset="0%"   stop-color="#6366f1" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Rounded square background -->
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+
+  <!-- Subtle inner glow overlay -->
+  <rect width="64" height="64" rx="14" fill="url(#innerGlow)"/>
+
+  <!-- Border shine — top edge highlight -->
+  <rect x="0.75" y="0.75" width="62.5" height="62.5" rx="13.25"
+        fill="none" stroke="white" stroke-width="0.75" stroke-opacity="0.10"/>
+
+  <!-- ── Flow lines (3 stacked speed lines, left side) -->
+  <!-- These represent "flow" — motion streaks coming in from left -->
+  <line x1="9"  y1="22" x2="18" y2="22" stroke="url(#brand)" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.55"/>
+  <line x1="9"  y1="28" x2="16" y2="28" stroke="url(#brand)" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.35"/>
+  <line x1="9"  y1="34" x2="14" y2="34" stroke="url(#brand)" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.20"/>
+
+  <!-- ── Bold checkmark (the "Task" part of FlowTask) -->
+  <!-- Drawn with filter="url(#glow)" for crisp+glow look -->
+  <g filter="url(#glow)">
+    <polyline
+      points="19,35  28,46  52,18"
+      stroke="url(#brand)"
+      stroke-width="6"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      fill="none"
+    />
+  </g>
+</svg>

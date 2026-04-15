@@ -1,0 +1,10 @@
+**TaskFlow | Full-Stack PWA Productivity Suite**
+Architected a high-fidelity productivity platform featuring real-time Firebase cloud synchronization and comprehensive offline support as a Progressive Web App (PWA).
+
+**Key Functionalities**:
+- **Real-time Sync**: Instant cross-device task management and secure user authentication.
+- **Offline & Installable**: Full PWA capabilities allowing offline usage and home-screen installation.
+- **Advanced Management**: Smart search, priority-based filtering, and category organization.
+- **Visual Analytics**: Interactive dashboards for tracking productivity trends and weekly completion stats.
+
+**Tech Stack**: React, Firebase (Firestore, Auth), PWA/Workbox, Framer Motion, Tailwind CSS, Recharts.

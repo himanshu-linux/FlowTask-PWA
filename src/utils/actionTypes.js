@@ -1,0 +1,9 @@
+export const actions = {
+  SET_TASKS:        'SET_TASKS',
+  SET_STATUS:       'SET_STATUS',
+  SET_PRIORITY:     'SET_PRIORITY',
+  SET_CATEGORY:     'SET_CATEGORY',
+  SET_SEARCH:       'SET_SEARCH',
+  REORDER_TASKS:    'REORDER_TASKS',
+  SET_LOADING:      'SET_LOADING',
+};
