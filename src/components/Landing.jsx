@@ -55,7 +55,7 @@ function DashboardMockup() {
     <div style={{ background: '#0f172a', borderRadius: 16, padding: 20, width: '100%', maxWidth: 700, margin: '0 auto', fontFamily: 'Inter,sans-serif' }}>
       <div style={{ color: '#f8fafc', fontWeight: 700, fontSize: 14, marginBottom: 16 }}>Analytics Dashboard</div>
       {/* Stat cards */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 8, marginBottom: 16 }}>
+      <div className="landing-dash-stats" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 8, marginBottom: 16 }}>
         {[['24', 'Total Tasks', '#6366f1'], ['18', 'Completed', '#34d399'], ['4', 'In Progress', '#fbbf24'], ['92%', 'Perf. Score', '#06b6d4']].map(([val, label, color]) => (
           <div key={label} style={{ background: '#1e293b', borderRadius: 10, padding: '10px 12px', border: '1px solid #334155' }}>
             <div style={{ color, fontWeight: 800, fontSize: 18 }}>{val}</div>
@@ -121,6 +121,60 @@ export default function Landing() {
 
   return (
     <div className="min-h-screen bg-[#060b14] text-white overflow-x-hidden" style={{ fontFamily: 'Inter, sans-serif' }}>
+      <style>{`
+        @media (max-width: 640px) {
+          .landing-hero-section {
+            padding: 56px 20px 40px !important;
+          }
+          .landing-hero-btns {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 10px !important;
+          }
+          .landing-hero-btns a {
+            text-align: center !important;
+            justify-content: center !important;
+          }
+          .landing-stats-grid {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            justify-items: center !important;
+            gap: 20px !important;
+          }
+          .landing-feature-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .landing-analytics-grid {
+            grid-template-columns: 1fr !important;
+            gap: 28px !important;
+          }
+          .landing-dash-stats {
+            grid-template-columns: 1fr 1fr !important;
+          }
+          .landing-cta-box {
+            padding: 36px 20px !important;
+            border-radius: 16px !important;
+          }
+          .landing-cta-btns {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 10px !important;
+          }
+          .landing-cta-btns a {
+            text-align: center !important;
+            justify-content: center !important;
+          }
+          .landing-features-section {
+            padding: 64px 20px !important;
+          }
+          .landing-analytics-section {
+            padding: 0 20px 64px !important;
+          }
+          .landing-demo-section {
+            padding: 0 20px 64px !important;
+          }
+        }
+      `}</style>
 
       {/* ── Ambient blobs ────────────────────────────────────────────── */}
       <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0, overflow: 'hidden' }}>
@@ -150,7 +204,7 @@ export default function Landing() {
       </nav>
 
       {/* ── Hero ─────────────────────────────────────────────────────── */}
-      <section ref={heroRef} style={{ position: 'relative', zIndex: 1, textAlign: 'center', padding: '96px 24px 64px' }}>
+      <section ref={heroRef} className="landing-hero-section" style={{ position: 'relative', zIndex: 1, textAlign: 'center', padding: '96px 24px 64px' }}>
         {/* Badge */}
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(99,102,241,0.12)', border: '1px solid rgba(99,102,241,0.3)', borderRadius: 999, padding: '6px 16px', marginBottom: 32 }}>
           <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#34d399', display: 'inline-block', boxShadow: '0 0 8px #34d399' }} />
@@ -171,7 +225,7 @@ export default function Landing() {
         </p>
 
         {/* CTAs */}
-        <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+        <div className="landing-hero-btns" style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link to="/signup" onClick={setNavFlag} style={{ background: 'linear-gradient(135deg,#6366f1,#06b6d4)', color: '#fff', textDecoration: 'none', fontSize: 15, fontWeight: 700, padding: '14px 32px', borderRadius: 12, boxShadow: '0 0 30px rgba(99,102,241,0.4)', display: 'inline-flex', alignItems: 'center', gap: 8 }}>
             Start for Free →
           </Link>
@@ -196,7 +250,7 @@ export default function Landing() {
 
       {/* ── Stats strip ──────────────────────────────────────────────── */}
       <section style={{ position: 'relative', zIndex: 1, borderTop: '1px solid rgba(51,65,85,0.4)', borderBottom: '1px solid rgba(51,65,85,0.4)', background: 'rgba(255,255,255,0.02)', padding: '28px 24px' }}>
-        <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', gap: 24, textAlign: 'center' }}>
+        <div className="landing-stats-grid" style={{ maxWidth: 900, margin: '0 auto', display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', gap: 24, textAlign: 'center' }}>
           {[['92%', 'Less Render-Blocking JS'], ['27KB', 'Critical-Path Bundle'], ['Real-Time', 'Firestore Sync'], ['PWA', 'Offline-Ready'], ['AI', 'Smart Input Parsing']].map(([val, label]) => (
             <div key={label}>
               <div style={{ fontSize: 22, fontWeight: 800, background: 'linear-gradient(135deg,#a5b4fc,#06b6d4)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{val}</div>
@@ -207,13 +261,13 @@ export default function Landing() {
       </section>
 
       {/* ── Features ─────────────────────────────────────────────────── */}
-      <section style={{ position: 'relative', zIndex: 1, padding: '96px 24px', maxWidth: 1100, margin: '0 auto' }}>
+      <section className="landing-features-section" style={{ position: 'relative', zIndex: 1, padding: '96px 24px', maxWidth: 1100, margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 56 }}>
           <p style={{ color: '#6366f1', fontSize: 13, fontWeight: 600, letterSpacing: 2, marginBottom: 12, textTransform: 'uppercase' }}>Capabilities</p>
           <h2 style={{ fontSize: 'clamp(2rem,4vw,3rem)', fontWeight: 800, color: '#f8fafc', letterSpacing: '-0.03em' }}>Everything You Need to Ship</h2>
           <p style={{ color: '#64748b', marginTop: 16, fontSize: 16, maxWidth: 500, margin: '16px auto 0' }}>Built with production-grade patterns, not just tutorial code.</p>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: 20 }}>
+        <div className="landing-feature-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: 20 }}>
           {FEATURES.map((f, i) => (
             <div key={i} style={{ background: 'rgba(30,41,59,0.5)', border: '1px solid rgba(51,65,85,0.6)', borderRadius: 16, padding: '28px 24px', backdropFilter: 'blur(8px)', transition: 'border-color 0.2s, box-shadow 0.2s', cursor: 'default' }}
               onMouseOver={e => { e.currentTarget.style.borderColor = 'rgba(99,102,241,0.5)'; e.currentTarget.style.boxShadow = '0 0 30px rgba(99,102,241,0.1)'; }}
@@ -227,8 +281,8 @@ export default function Landing() {
       </section>
 
       {/* ── Analytics screenshot ─────────────────────────────────────── */}
-      <section style={{ position: 'relative', zIndex: 1, padding: '0 24px 96px', maxWidth: 1100, margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40, alignItems: 'center' }}>
+      <section className="landing-analytics-section" style={{ position: 'relative', zIndex: 1, padding: '0 24px 96px', maxWidth: 1100, margin: '0 auto' }}>
+        <div className="landing-analytics-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40, alignItems: 'center' }}>
           <div>
             <p style={{ color: '#06b6d4', fontSize: 13, fontWeight: 600, letterSpacing: 2, marginBottom: 12, textTransform: 'uppercase' }}>Analytics</p>
             <h2 style={{ fontSize: 'clamp(1.8rem,3vw,2.5rem)', fontWeight: 800, color: '#f8fafc', lineHeight: 1.2, marginBottom: 20 }}>Measure What<br />Matters Most</h2>
@@ -254,7 +308,7 @@ export default function Landing() {
       </section>
 
       {/* ── Animated Demo Section ──────────────────────────────────── */}
-      <section style={{ position: 'relative', zIndex: 1, padding: '0 24px 96px', maxWidth: 960, margin: '0 auto', textAlign: 'center' }}>
+      <section className="landing-demo-section" style={{ position: 'relative', zIndex: 1, padding: '0 24px 96px', maxWidth: 960, margin: '0 auto', textAlign: 'center' }}>
         <p style={{ color: '#a855f7', fontSize: 13, fontWeight: 600, letterSpacing: 2, marginBottom: 12, textTransform: 'uppercase' }}>Live Demo</p>
         <h2 style={{ fontSize: 'clamp(1.8rem,3vw,2.5rem)', fontWeight: 800, color: '#f8fafc', marginBottom: 16 }}>See It In Action</h2>
         <p style={{ color: '#64748b', fontSize: 15, marginBottom: 48 }}>Watch FlowTask's AI input, drag-and-drop Kanban board, and live analytics — right here.</p>
@@ -273,10 +327,10 @@ export default function Landing() {
 
       {/* ── Final CTA ────────────────────────────────────────────────── */}
       <section style={{ position: 'relative', zIndex: 1, padding: '0 24px 96px', textAlign: 'center' }}>
-        <div style={{ maxWidth: 600, margin: '0 auto', background: 'rgba(99,102,241,0.06)', border: '1px solid rgba(99,102,241,0.2)', borderRadius: 24, padding: '56px 40px', boxShadow: '0 0 80px rgba(99,102,241,0.08)' }}>
+        <div className="landing-cta-box" style={{ maxWidth: 600, margin: '0 auto', background: 'rgba(99,102,241,0.06)', border: '1px solid rgba(99,102,241,0.2)', borderRadius: 24, padding: '56px 40px', boxShadow: '0 0 80px rgba(99,102,241,0.08)' }}>
           <h2 style={{ fontSize: 'clamp(1.8rem,3vw,2.5rem)', fontWeight: 800, color: '#f8fafc', marginBottom: 16 }}>Ready to Get Organized?</h2>
           <p style={{ color: '#64748b', fontSize: 15, marginBottom: 32 }}>Create an account and start managing tasks collaboratively in seconds.</p>
-          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="landing-cta-btns" style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link to="/signup" onClick={setNavFlag} style={{ background: 'linear-gradient(135deg,#6366f1,#06b6d4)', color: '#fff', textDecoration: 'none', fontSize: 15, fontWeight: 700, padding: '14px 32px', borderRadius: 12, boxShadow: '0 0 30px rgba(99,102,241,0.4)' }}>
               Create Free Account →
             </Link>
