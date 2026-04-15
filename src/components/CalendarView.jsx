@@ -1,6 +1,8 @@
 import { useState, useMemo, useCallback } from 'react';
 import { Calendar, dateFnsLocalizer, Views } from 'react-big-calendar';
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import { format, parse, startOfWeek, getDay } from 'date-fns';
 import { enUS } from 'date-fns/locale';
 import { useTask } from '../context/TaskContext';
@@ -289,6 +291,8 @@ export default function CalendarView() {
           border: '1px solid rgba(51,65,85,0.5)', padding: '20px 16px',
           backdropFilter: 'blur(10px)',
         }}>
+        {/* Calendar wrapped in DndProvider (required by withDragAndDrop) */}
+        <DndProvider backend={HTML5Backend}>
           <DnDCalendar
             localizer={localizer}
             events={events}
@@ -306,6 +310,7 @@ export default function CalendarView() {
             popup
             popupOffset={{ x: 0, y: 8 }}
           />
+        </DndProvider>
         </div>
 
         {/* Sidebar — unscheduled tasks */}
