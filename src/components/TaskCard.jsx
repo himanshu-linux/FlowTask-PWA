@@ -127,10 +127,10 @@ export default function TaskCard({ task, onOpenDetails, onOpenShare }) {
 
       {/* Footer: Metadata & Collaboration Badges */}
       <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-border/40">
-        {task.date && (
+        {task.dueDate && (
           <div className={`flex items-center gap-1 text-[10px] font-bold ${isOverdue ? 'text-danger' : 'text-textMuted'}`}>
             <Calendar className="w-3 h-3" />
-            {new Date(task.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}
+            {new Date(task.dueDate).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}
           </div>
         )}
         
