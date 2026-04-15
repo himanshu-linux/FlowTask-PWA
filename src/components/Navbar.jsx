@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../hooks/useTheme';
 import { usePWA } from '../hooks/usePWA';
-import { ClipboardList, LayoutDashboard, Download } from 'lucide-react';
+import { ClipboardList, LayoutDashboard, Download, CalendarDays } from 'lucide-react';
 
 export default function Navbar() {
   const { currentUser, logout } = useAuth();
@@ -36,6 +36,15 @@ export default function Navbar() {
               >
                 <ClipboardList className="w-3.5 h-3.5" />
                 Tasks
+              </Link>
+              <Link 
+                to="/calendar"
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold transition-all ${
+                  isActive('/calendar') ? 'bg-surface text-primary shadow-sm' : 'text-textSecondary hover:text-textMain'
+                }`}
+              >
+                <CalendarDays className="w-3.5 h-3.5" />
+                Calendar
               </Link>
               <Link 
                 to="/dashboard" 

@@ -259,3 +259,146 @@ html, body {
     justify-content: center;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   REACT BIG CALENDAR — Premium Dark Theme
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Container reset ────────────────────────────────────────── */
+.rbc-calendar {
+  background: transparent;
+  font-family: 'Inter', 'Outfit', sans-serif;
+  color: #94a3b8;
+}
+
+/* ── Month view border ──────────────────────────────────────── */
+.rbc-month-view,
+.rbc-time-view {
+  background: transparent;
+  border: 1px solid rgba(51, 65, 85, 0.4) !important;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* ── Day headers (Mon, Tue…) ────────────────────────────────── */
+.rbc-header {
+  background: rgba(15, 23, 42, 0.8) !important;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.5) !important;
+  padding: 10px 0 !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  color: #475569 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.09em !important;
+}
+.rbc-header + .rbc-header {
+  border-left: 1px solid rgba(51, 65, 85, 0.3) !important;
+}
+
+/* ── Day cells ──────────────────────────────────────────────── */
+.rbc-day-bg {
+  border-left: 1px solid rgba(51, 65, 85, 0.2) !important;
+  transition: background 0.15s ease;
+}
+.rbc-day-bg:hover {
+  background: rgba(99, 102, 241, 0.04) !important;
+}
+
+/* ── Out-of-range days (prev / next month) ──────────────────── */
+.rbc-off-range-bg {
+  background: rgba(15, 23, 42, 0.35) !important;
+}
+.rbc-off-range .rbc-button-link {
+  color: #1e293b !important;
+}
+
+/* ── Today highlight ────────────────────────────────────────── */
+.rbc-today {
+  background: rgba(99, 102, 241, 0.07) !important;
+}
+
+/* ── Month row separator ────────────────────────────────────── */
+.rbc-month-row + .rbc-month-row {
+  border-top: 1px solid rgba(51, 65, 85, 0.25) !important;
+}
+
+/* ── Date numbers ───────────────────────────────────────────── */
+.rbc-date-cell {
+  padding: 5px 8px !important;
+  text-align: right;
+}
+.rbc-button-link {
+  color: #475569;
+  font-size: 12px;
+  font-weight: 600;
+}
+.rbc-now .rbc-button-link {
+  background: linear-gradient(135deg, #6366f1, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+}
+
+/* ── Events ─────────────────────────────────────────────────── */
+.rbc-event {
+  background: none !important;
+  border: none !important;
+  padding: 1px 3px !important;
+}
+.rbc-event:focus { outline: 2px solid rgba(165,180,252,0.5) !important; }
+.rbc-event.rbc-selected {
+  box-shadow: 0 0 0 2px #a5b4fc !important;
+}
+.rbc-event-content { overflow: hidden; }
+
+/* ── "X more" link ──────────────────────────────────────────── */
+.rbc-show-more {
+  color: #818cf8 !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  background: rgba(99,102,241,0.12) !important;
+  border-radius: 5px;
+  padding: 2px 6px;
+}
+
+/* ── Week / time view ───────────────────────────────────────── */
+.rbc-time-header { border-bottom: 1px solid rgba(51,65,85,0.4) !important; }
+.rbc-time-header-content { border-left: 1px solid rgba(51,65,85,0.3) !important; }
+.rbc-time-content { border-top: 1px solid rgba(51,65,85,0.4) !important; }
+.rbc-timeslot-group { border-bottom: 1px solid rgba(51,65,85,0.25) !important; }
+.rbc-time-slot { border-top: 1px solid rgba(51,65,85,0.1) !important; }
+.rbc-time-column { border-right: 1px solid rgba(51,65,85,0.3) !important; }
+.rbc-time-content > * + * > * { border-left: 1px solid rgba(51,65,85,0.2) !important; }
+.rbc-label { font-size: 10px !important; color: #334155 !important; font-weight: 600 !important; }
+.rbc-current-time-indicator {
+  background: linear-gradient(90deg, #6366f1, #06b6d4) !important;
+  height: 2px;
+}
+
+/* ── DnD drag states ────────────────────────────────────────── */
+.rbc-addons-dnd-drag-preview {
+  opacity: 0.9;
+  transform: rotate(1.5deg) scale(1.02);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.6) !important;
+  z-index: 999;
+}
+.rbc-addons-dnd-over .rbc-day-bg {
+  background: rgba(99,102,241,0.1) !important;
+}
+.rbc-addons-dnd-dragged-event { opacity: 0.35 !important; }
+
+/* ── Popup overlay (when "+X more" clicked) ─────────────────── */
+.rbc-overlay {
+  background: rgba(15,23,42,0.95) !important;
+  border: 1px solid rgba(99,102,241,0.3) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.7) !important;
+  backdrop-filter: blur(12px);
+}
+.rbc-overlay-header {
+  color: #94a3b8 !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  border-bottom: 1px solid rgba(51,65,85,0.4) !important;
+}
+

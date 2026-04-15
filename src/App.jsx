@@ -13,6 +13,7 @@ const Dashboard   = lazy(() => import('./components/Dashboard'));
 const TaskListView = lazy(() => import('./components/TaskListView'));
 const Landing      = lazy(() => import('./components/Landing'));
 const ReminderManager = lazy(() => import('./components/ReminderManager'));
+const CalendarView = lazy(() => import('./components/CalendarView'));
 
 // ─── Lightweight spinner ────────────────────────────────────────────────────
 function PageLoader() {
@@ -136,6 +137,20 @@ export default function App() {
               <AuthenticatedLayout>
                 <Suspense fallback={<PageLoader />}>
                   <Dashboard />
+                </Suspense>
+              </AuthenticatedLayout>
+            </ProtectedRoute>
+          }
+        />
+
+        {/* ── Protected: Calendar view ── */}
+        <Route
+          path="/calendar"
+          element={
+            <ProtectedRoute>
+              <AuthenticatedLayout>
+                <Suspense fallback={<PageLoader />}>
+                  <CalendarView />
                 </Suspense>
               </AuthenticatedLayout>
             </ProtectedRoute>
